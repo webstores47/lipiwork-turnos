@@ -7,499 +7,129 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --or: #F47920;
-    --or-d: #C85F10;
-    --or-l: #FFF4EC;
-    --or-ll: #FEE8D0;
-    --nv: #1C2F5E;
-    --nv-l: #243870;
-    --nv-ll: #EEF1F8;
-    --wh: #FFFFFF;
-    --gray: #F3F4F6;
-    --gray-b: #E5E7EB;
-    --txt: #111827;
-    --txt-s: #6B7280;
-    --ok: #059669;
-    --ok-l: #D1FAE5;
-    --err: #DC2626;
-    --err-l: #FEE2E2;
+    --or: #F47920; --or-d: #C85F10; --or-l: #FFF4EC; --or-ll: #FEE8D0;
+    --nv: #1C2F5E; --nv-l: #243870; --nv-ll: #EEF1F8;
+    --wh: #FFFFFF; --gray: #F3F4F6; --gray-b: #E5E7EB;
+    --txt: #111827; --txt-s: #6B7280;
+    --ok: #059669; --ok-l: #D1FAE5;
+    --err: #DC2626; --err-l: #FEE2E2;
+    --dis: #9CA3AF; --dis-l: #F3F4F6;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Barlow', sans-serif; background: #F0F2F7; min-height: 100vh; color: var(--txt); }
 
-  body {
-    font-family: 'Barlow', sans-serif;
-    background: #F0F2F7;
-    min-height: 100vh;
-    color: var(--txt);
-  }
-
-  /* ── HEADER ── */
   header {
-    background: var(--nv);
-    padding: 0 2rem;
-    height: 68px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    background: var(--nv); padding: 0 2rem; height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
     box-shadow: 0 2px 12px rgba(28,47,94,0.3);
   }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-flame { width: 36px; height: 36px; background: var(--or); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .logo-text { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 800; color: var(--or); letter-spacing: 0.08em; }
+  .logo-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+  .header-badge { background: rgba(244,121,32,0.12); border: 1px solid rgba(244,121,32,0.25); border-radius: 20px; padding: 6px 14px; font-size: 12px; color: var(--or); font-weight: 600; display: flex; align-items: center; gap: 6px; }
+  .dot-live { width: 7px; height: 7px; background: #4ADE80; border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
 
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .logo-flame {
-    width: 36px;
-    height: 36px;
-    background: var(--or);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-  }
-
-  .logo-text {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--or);
-    letter-spacing: 0.08em;
-    line-height: 1;
-  }
-
-  .logo-sub {
-    font-size: 11px;
-    color: rgba(255,255,255,0.4);
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    margin-top: 2px;
-  }
-
-  .header-badge {
-    background: rgba(244,121,32,0.12);
-    border: 1px solid rgba(244,121,32,0.25);
-    border-radius: 20px;
-    padding: 6px 14px;
-    font-size: 12px;
-    color: var(--or);
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .dot-live {
-    width: 7px; height: 7px;
-    background: #4ADE80;
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%,100% { opacity:1; transform:scale(1); }
-    50% { opacity:0.5; transform:scale(0.8); }
-  }
-
-  /* ── HERO BAND ── */
-  .hero-band {
-    background: linear-gradient(135deg, var(--nv) 0%, var(--nv-l) 100%);
-    padding: 32px 2rem 28px;
-    text-align: center;
-    border-bottom: 3px solid var(--or);
-  }
-
-  .hero-band h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 36px;
-    font-weight: 800;
-    color: var(--wh);
-    letter-spacing: 0.04em;
-    margin-bottom: 6px;
-  }
-
+  .hero-band { background: linear-gradient(135deg, var(--nv) 0%, var(--nv-l) 100%); padding: 32px 2rem 28px; text-align: center; border-bottom: 3px solid var(--or); }
+  .hero-band h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 36px; font-weight: 800; color: var(--wh); letter-spacing: 0.04em; margin-bottom: 6px; }
   .hero-band h1 span { color: var(--or); }
+  .hero-band p { font-size: 14px; color: rgba(255,255,255,0.55); }
 
-  .hero-band p {
-    font-size: 14px;
-    color: rgba(255,255,255,0.55);
-    font-weight: 400;
-  }
+  main { max-width: 680px; margin: 0 auto; padding: 32px 1.5rem 60px; }
 
-  /* ── MAIN ── */
-  main {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 32px 1.5rem 60px;
-  }
+  .card { background: var(--wh); border-radius: 14px; border: 1px solid var(--gray-b); padding: 28px; margin-bottom: 20px; animation: fadeUp 0.35s ease both; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
 
-  /* ── CARD ── */
-  .card {
-    background: var(--wh);
-    border-radius: 14px;
-    border: 1px solid var(--gray-b);
-    padding: 28px;
-    margin-bottom: 20px;
-    animation: fadeUp 0.35s ease both;
-  }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; color: var(--nv); letter-spacing: 0.04em; border-left: 4px solid var(--or); padding-left: 12px; margin-bottom: 6px; text-transform: uppercase; }
+  .card-sub { font-size: 12px; color: var(--txt-s); margin-bottom: 22px; padding-left: 16px; }
 
-  @keyframes fadeUp {
-    from { opacity:0; transform:translateY(12px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
-
-  .card-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--nv);
-    letter-spacing: 0.04em;
-    border-left: 4px solid var(--or);
-    padding-left: 12px;
-    margin-bottom: 6px;
-    text-transform: uppercase;
-  }
-
-  .card-sub {
-    font-size: 12px;
-    color: var(--txt-s);
-    margin-bottom: 22px;
-    padding-left: 16px;
-  }
-
-  /* ── FORM ELEMENTS ── */
   .field { margin-bottom: 18px; }
-
-  label {
-    display: block;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--nv);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 7px;
-  }
-
+  label { display: block; font-size: 12px; font-weight: 700; color: var(--nv); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 7px; }
   label .req { color: var(--or); margin-left: 2px; }
 
-  input[type="text"] {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1.5px solid var(--gray-b);
-    border-radius: 9px;
-    font-size: 15px;
-    font-family: 'Barlow', sans-serif;
-    color: var(--txt);
-    background: var(--wh);
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
-  }
-
-  input[type="text"]:focus {
-    border-color: var(--or);
-    box-shadow: 0 0 0 3px rgba(244,121,32,0.12);
-  }
-
+  input[type="text"] { width: 100%; padding: 12px 16px; border: 1.5px solid var(--gray-b); border-radius: 9px; font-size: 15px; font-family: 'Barlow', sans-serif; color: var(--txt); background: var(--wh); transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
+  input[type="text"]:focus { border-color: var(--or); box-shadow: 0 0 0 3px rgba(244,121,32,0.12); }
   input[type="text"].error { border-color: var(--err); }
 
-  select {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1.5px solid var(--gray-b);
-    border-radius: 9px;
-    font-size: 15px;
-    font-family: 'Barlow', sans-serif;
-    color: var(--txt);
-    background: var(--wh);
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    cursor: pointer;
-    transition: border-color 0.2s;
-    outline: none;
-  }
-
+  select { width: 100%; padding: 12px 16px; border: 1.5px solid var(--gray-b); border-radius: 9px; font-size: 15px; font-family: 'Barlow', sans-serif; color: var(--txt); background: var(--wh); appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; cursor: pointer; transition: border-color 0.2s; outline: none; }
   select:focus { border-color: var(--or); box-shadow: 0 0 0 3px rgba(244,121,32,0.12); }
   select.error { border-color: var(--err); }
 
-  .err-msg {
-    color: var(--err);
-    font-size: 12px;
-    margin-top: 5px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
+  .err-msg { color: var(--err); font-size: 12px; margin-top: 5px; display: flex; align-items: center; gap: 4px; }
 
-  /* ── TIPO DE TURNO BUTTONS ── */
-  .tipo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
-  .tipo-btn {
-    border: 2px solid var(--gray-b);
-    border-radius: 10px;
-    padding: 14px 16px;
-    background: var(--wh);
-    cursor: pointer;
-    text-align: left;
-    transition: all 0.18s;
-    font-family: 'Barlow', sans-serif;
-  }
-
+  .tipo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .tipo-btn { border: 2px solid var(--gray-b); border-radius: 10px; padding: 14px 16px; background: var(--wh); cursor: pointer; text-align: left; transition: all 0.18s; font-family: 'Barlow', sans-serif; }
   .tipo-btn:hover { border-color: var(--or); background: var(--or-l); }
-
-  .tipo-btn.active {
-    border-color: var(--or);
-    background: var(--or-l);
-    box-shadow: 0 0 0 3px rgba(244,121,32,0.12);
-  }
-
-  .tipo-btn .tipo-icon {
-    font-size: 22px;
-    margin-bottom: 6px;
-    display: block;
-  }
-
-  .tipo-btn .tipo-name {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--nv);
-    display: block;
-    margin-bottom: 2px;
-  }
-
-  .tipo-btn .tipo-desc {
-    font-size: 11px;
-    color: var(--txt-s);
-  }
-
+  .tipo-btn.active { border-color: var(--or); background: var(--or-l); box-shadow: 0 0 0 3px rgba(244,121,32,0.12); }
+  .tipo-btn .tipo-icon { font-size: 22px; margin-bottom: 6px; display: block; }
+  .tipo-btn .tipo-name { font-size: 15px; font-weight: 700; color: var(--nv); display: block; margin-bottom: 2px; }
+  .tipo-btn .tipo-desc { font-size: 11px; color: var(--txt-s); }
   .tipo-btn.active .tipo-name { color: var(--or-d); }
 
-  /* ── HORARIOS GRID ── */
-  .horarios-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 8px;
-    margin-top: 4px;
-  }
+  .horarios-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 8px; margin-top: 4px; }
 
-  .horario-btn {
-    border: 1.5px solid var(--gray-b);
-    border-radius: 8px;
-    padding: 10px 12px;
-    background: var(--wh);
-    cursor: pointer;
-    font-family: 'Barlow', sans-serif;
-    font-size: 13px;
-    color: var(--txt);
-    text-align: center;
-    transition: all 0.15s;
-    line-height: 1.4;
-  }
+  /* Horario disponible */
+  .horario-btn { border: 1.5px solid var(--gray-b); border-radius: 8px; padding: 10px 12px; background: var(--wh); cursor: pointer; font-family: 'Barlow', sans-serif; font-size: 13px; color: var(--txt); text-align: center; transition: all 0.15s; line-height: 1.4; position: relative; }
+  .horario-btn:hover:not(:disabled) { border-color: var(--or); background: var(--or-l); }
+  .horario-btn.active { border-color: var(--or); background: var(--or-l); color: var(--or-d); font-weight: 700; box-shadow: 0 0 0 2px rgba(244,121,32,0.15); }
 
-  .horario-btn:hover { border-color: var(--or); background: var(--or-l); }
+  /* Horario lleno */
+  .horario-btn.lleno { border-color: var(--gray-b); background: var(--dis-l); color: var(--dis); cursor: not-allowed; opacity: 0.7; }
+  .horario-btn.lleno .disp-tag { color: var(--err); font-weight: 700; }
 
-  .horario-btn.active {
-    border-color: var(--or);
-    background: var(--or-l);
-    color: var(--or-d);
-    font-weight: 700;
-    box-shadow: 0 0 0 2px rgba(244,121,32,0.15);
-  }
+  /* Horario con límite (pero aún disponible) */
+  .horario-btn.limitado { border-color: #FCD34D; background: #FFFBEB; }
+  .horario-btn.limitado:hover:not(:disabled) { border-color: #F59E0B; background: #FEF3C7; }
 
-  .horario-btn .colacion-tag {
-    display: block;
-    font-size: 10px;
-    color: var(--txt-s);
-    margin-top: 2px;
-    font-weight: 400;
-  }
+  .disp-tag { display: block; font-size: 10px; margin-top: 3px; color: var(--txt-s); font-weight: 400; }
+  .horario-btn.active .disp-tag { color: var(--or-d); opacity: 0.8; }
 
-  .horario-btn.active .colacion-tag { color: var(--or-d); opacity: 0.8; }
+  .colacion-info { background: var(--or-ll); border: 1px solid rgba(244,121,32,0.25); border-radius: 8px; padding: 10px 14px; font-size: 12px; color: var(--or-d); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
 
-  /* ── SUBMIT BUTTON ── */
-  .btn-submit {
-    width: 100%;
-    background: var(--or);
-    color: var(--wh);
-    border: none;
-    border-radius: 10px;
-    padding: 15px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 8px;
-  }
+  /* Loading skeleton */
+  .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.2s infinite; border-radius: 8px; height: 48px; }
+  @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
 
+  .btn-submit { width: 100%; background: var(--or); color: var(--wh); border: none; border-radius: 10px; padding: 15px; font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, transform 0.1s; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 8px; }
   .btn-submit:hover { background: var(--or-d); }
   .btn-submit:active { transform: scale(0.99); }
   .btn-submit:disabled { background: #D1D5DB; cursor: not-allowed; transform: none; }
 
-  /* ── SUCCESS / ERROR BANNERS ── */
-  .banner {
-    border-radius: 10px;
-    padding: 16px 18px;
-    margin-bottom: 20px;
-    font-size: 14px;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    animation: fadeUp 0.3s ease;
-  }
-
-  .banner.success {
-    background: var(--ok-l);
-    border: 1px solid #6EE7B7;
-    color: #065F46;
-  }
-
-  .banner.error-banner {
-    background: var(--err-l);
-    border: 1px solid #FCA5A5;
-    color: #991B1B;
-  }
-
-  .banner-icon { font-size: 18px; margin-top: 0px; }
-
+  .banner { border-radius: 10px; padding: 16px 18px; margin-bottom: 20px; font-size: 14px; display: flex; align-items: flex-start; gap: 10px; animation: fadeUp 0.3s ease; }
+  .banner.success { background: var(--ok-l); border: 1px solid #6EE7B7; color: #065F46; }
+  .banner.error-banner { background: var(--err-l); border: 1px solid #FCA5A5; color: #991B1B; }
+  .banner-icon { font-size: 18px; }
   .banner strong { display: block; font-weight: 700; margin-bottom: 2px; }
 
-  /* ── SUMMARY PREVIEW ── */
-  .preview {
-    background: var(--nv-ll);
-    border: 1px solid #DBEAFE;
-    border-radius: 10px;
-    padding: 16px 18px;
-    margin-bottom: 20px;
-  }
+  .preview { background: var(--nv-ll); border: 1px solid #DBEAFE; border-radius: 10px; padding: 16px 18px; margin-bottom: 20px; }
+  .preview-title { font-size: 11px; font-weight: 700; color: var(--nv); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+  .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .preview-item label { font-size: 10px; color: var(--txt-s); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px; }
+  .preview-item span { font-size: 14px; font-weight: 600; color: var(--nv); }
 
-  .preview-title {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--nv);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 10px;
-  }
+  .spinner { width: 18px; height: 18px; border: 2.5px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; display: inline-block; }
+  @keyframes spin { to{transform:rotate(360deg)} }
 
-  .preview-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
+  /* Leyenda de disponibilidad */
+  .leyenda { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; font-size: 11px; color: var(--txt-s); }
+  .leyenda-item { display: flex; align-items: center; gap: 5px; }
+  .leyenda-dot { width: 10px; height: 10px; border-radius: 3px; }
 
-  .preview-item label {
-    font-size: 10px;
-    color: var(--txt-s);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin-bottom: 2px;
-  }
-
-  .preview-item span {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--nv);
-  }
-
-  /* ── PROGRESS STEPS ── */
-  .steps {
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    margin-bottom: 28px;
-  }
-
-  .step {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    color: rgba(255,255,255,0.4);
-  }
-
-  .step-num {
-    width: 22px; height: 22px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4);
-  }
-
-  .step.done .step-num { background: var(--ok); border-color: var(--ok); color: white; }
-  .step.active .step-num { background: var(--or); border-color: var(--or); color: white; }
-  .step.active { color: var(--or); font-weight: 600; }
-  .step.done { color: rgba(255,255,255,0.6); }
-
-  .step-divider { width: 24px; height: 1px; background: rgba(255,255,255,0.15); margin-top: 1px; }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--nv);
-    text-align: center;
-    padding: 18px;
-    font-size: 11px;
-    color: rgba(255,255,255,0.3);
-    letter-spacing: 0.03em;
-  }
-
+  footer { background: var(--nv); text-align: center; padding: 18px; font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.03em; }
   footer span { color: var(--or); }
-
-  /* ── HORARIOS HELPER ── */
-  .colacion-info {
-    background: var(--or-ll);
-    border: 1px solid rgba(244,121,32,0.25);
-    border-radius: 8px;
-    padding: 10px 14px;
-    font-size: 12px;
-    color: var(--or-d);
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .spinner {
-    width: 18px; height: 18px;
-    border: 2.5px solid rgba(255,255,255,0.3);
-    border-top-color: white;
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    display: inline-block;
-  }
-
-  @keyframes spin { to { transform: rotate(360deg); } }
 
   @media (max-width: 480px) {
     .tipo-grid { grid-template-columns: 1fr 1fr; }
     .horarios-grid { grid-template-columns: 1fr 1fr; }
     .preview-grid { grid-template-columns: 1fr; }
     header { padding: 0 1rem; }
-    .header-badge span:last-child { display: none; }
   }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
   <div class="logo">
     <div class="logo-flame">🔥</div>
@@ -514,36 +144,21 @@
   </div>
 </header>
 
-<!-- HERO BAND -->
 <div class="hero-band">
-  <div class="steps">
-    <div class="step done" id="step1"><div class="step-num">1</div><span>Identidad</span></div>
-    <div class="step-divider"></div>
-    <div class="step active" id="step2"><div class="step-num">2</div><span>Turno</span></div>
-    <div class="step-divider"></div>
-    <div class="step" id="step3"><div class="step-num">3</div><span>Confirmar</span></div>
-  </div>
   <h1>Registro de <span>Turno</span></h1>
-  <p>Los datos se guardan automáticamente en tiempo real</p>
+  <p>Disponibilidad actualizada en tiempo real</p>
 </div>
 
 <main>
 
-  <!-- BANNER SUCCESS/ERROR (oculto por defecto) -->
   <div id="banner-success" class="banner success" style="display:none">
     <span class="banner-icon">✅</span>
-    <div>
-      <strong>¡Turno registrado exitosamente!</strong>
-      <span id="banner-detail"></span>
-    </div>
+    <div><strong>¡Turno registrado exitosamente!</strong><span id="banner-detail"></span></div>
   </div>
 
   <div id="banner-error" class="banner error-banner" style="display:none">
     <span class="banner-icon">⚠️</span>
-    <div>
-      <strong>Error al enviar</strong>
-      <span id="banner-error-msg">Por favor revisa tu conexión e intenta nuevamente.</span>
-    </div>
+    <div><strong>Error al enviar</strong><span id="banner-error-msg"></span></div>
   </div>
 
   <!-- CARD 1 — IDENTIDAD -->
@@ -561,23 +176,17 @@
       <label>Día de la semana <span class="req">*</span></label>
       <select id="dia">
         <option value="">Selecciona un día…</option>
-        <option>Lunes</option>
-        <option>Martes</option>
-        <option>Miércoles</option>
-        <option>Jueves</option>
-        <option>Viernes</option>
-        <option>Sábado</option>
-        <option>Domingo</option>
+        <option>Lunes</option><option>Martes</option><option>Miércoles</option>
+        <option>Jueves</option><option>Viernes</option><option>Sábado</option><option>Domingo</option>
       </select>
       <div class="err-msg" id="err-dia" style="display:none">⚠ Selecciona un día</div>
     </div>
   </div>
 
-  <!-- CARD 2 — TIPO DE TURNO -->
+  <!-- CARD 2 — TIPO -->
   <div class="card">
     <div class="card-title">Tipo de Turno</div>
     <div class="card-sub">Selecciona la duración de tu jornada</div>
-
     <div class="tipo-grid">
       <button class="tipo-btn" onclick="setTipo('4h')" id="btn-4h">
         <span class="tipo-icon">⏱</span>
@@ -593,20 +202,31 @@
     <div class="err-msg" id="err-tipo" style="display:none;margin-top:8px">⚠ Selecciona el tipo de turno</div>
   </div>
 
-  <!-- CARD 3 — HORARIO (aparece al elegir tipo) -->
+  <!-- CARD 3 — HORARIO -->
   <div class="card" id="card-horario" style="display:none">
     <div class="card-title">Horario</div>
     <div class="card-sub" id="horario-sub">Elige el bloque horario de tu turno</div>
 
     <div id="colacion-info" class="colacion-info" style="display:none">
-      🍽 El bloque incluye <strong>1 hora de colación</strong> — el horario real de trabajo es de 8 horas efectivas.
+      🍽 El bloque incluye <strong>1 hora de colación</strong> — horario real de trabajo de 8 horas efectivas.
     </div>
 
-    <div class="horarios-grid" id="horarios-grid"></div>
-    <div class="err-msg" id="err-horario" style="display:none;margin-top:8px">⚠ Selecciona un horario</div>
+    <!-- Leyenda -->
+    <div class="leyenda">
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#E5E7EB;border:1.5px solid #D1D5DB"></div> Disponible</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#FEF3C7;border:1.5px solid #FCD34D"></div> Quedan pocos cupos</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#F3F4F6;border:1.5px solid #E5E7EB"></div> Sin cupos</div>
+    </div>
+
+    <div class="horarios-grid" id="horarios-grid">
+      <!-- skeletons mientras carga -->
+      <div class="skeleton"></div><div class="skeleton"></div>
+      <div class="skeleton"></div><div class="skeleton"></div>
+    </div>
+    <div class="err-msg" id="err-horario" style="display:none;margin-top:8px">⚠ Selecciona un horario disponible</div>
   </div>
 
-  <!-- RESUMEN PREVIO AL ENVÍO -->
+  <!-- RESUMEN -->
   <div class="preview" id="preview-box" style="display:none">
     <div class="preview-title">📋 Resumen del turno a registrar</div>
     <div class="preview-grid">
@@ -617,7 +237,6 @@
     </div>
   </div>
 
-  <!-- BOTÓN ENVIAR -->
   <button class="btn-submit" id="btn-submit" onclick="enviar()">
     <span id="btn-text">Registrar Turno</span>
     <span id="btn-arrow">→</span>
@@ -625,31 +244,49 @@
 
 </main>
 
-<footer>
-  🔥 <span>LipiWork</span> — Sistema de Gestión de Turnos · Datos sincronizados en tiempo real con Google Sheets
-</footer>
+<footer>🔥 <span>LipiWork</span> — Gestión de Turnos · Datos sincronizados en tiempo real con Google Sheets</footer>
 
 <script>
   const SHEET_URL = "https://script.google.com/macros/s/AKfycbzB3Tgs2oDp6jmwyFyTSXRj0PuC1sj6K1nSkgbLiVbPwK_A5gYyFnuOquffwaIirX9e4w/exec";
 
+  // Turnos base (sin límite definido en Sheets)
   const TURNOS_4H = [];
   for (let h = 7; h <= 18; h++) {
-    const s = String(h).padStart(2,'0') + ':00';
-    const e = String(h + 4).padStart(2,'0') + ':00';
-    TURNOS_4H.push({ label: s + ' → ' + e, value: s + ' - ' + e });
+    const s = String(h).padStart(2,'0')+':00';
+    const e = String(h+4).padStart(2,'0')+':00';
+    TURNOS_4H.push({ value: s+' - '+e, label: s+' → '+e });
   }
-
   const TURNOS_8H = [];
   for (let h = 7; h <= 13; h++) {
-    const s = String(h).padStart(2,'0') + ':00';
-    const bloque = h + 9;
-    const e = String(bloque).padStart(2,'0') + ':00';
-    const trabajo = String(h).padStart(2,'0') + ':00 - ' + String(h+8).padStart(2,'0') + ':00';
-    TURNOS_8H.push({ label: s + ' → ' + e, sub: trabajo + ' efectivas', value: s + ' - ' + e });
+    const s = String(h).padStart(2,'0')+':00';
+    const e = String(h+9).padStart(2,'0')+':00';
+    const ef = String(h).padStart(2,'0')+':00 - '+String(h+8).padStart(2,'0')+':00';
+    TURNOS_8H.push({ value: s+' - '+e, label: s+' → '+e, sub: ef+' efectivas' });
   }
 
   let tipoActual = '';
   let horarioActual = '';
+  let capacidadData = []; // datos leídos desde Google Sheets
+
+  // ── Leer capacidad desde Apps Script (doGet) ──
+  async function cargarCapacidad() {
+    try {
+      const res = await fetch(SHEET_URL, { method: 'GET' });
+      const data = await res.json();
+      capacidadData = data;
+    } catch(e) {
+      // Si falla, el formulario muestra todos los turnos sin restricción
+      capacidadData = [];
+    }
+  }
+
+  // Llama al cargar la página
+  cargarCapacidad();
+
+  function getCapacidad(horarioValue) {
+    // Busca si ese horario tiene límite definido
+    return capacidadData.find(c => c.horario === horarioValue) || null;
+  }
 
   function setTipo(tipo) {
     tipoActual = tipo;
@@ -657,27 +294,52 @@
     document.getElementById('btn-4h').classList.toggle('active', tipo === '4h');
     document.getElementById('btn-8h').classList.toggle('active', tipo === '8h');
     document.getElementById('err-tipo').style.display = 'none';
-    renderHorarios(tipo);
     document.getElementById('card-horario').style.display = 'block';
     document.getElementById('colacion-info').style.display = tipo === '8h' ? 'flex' : 'none';
     document.getElementById('horario-sub').textContent = tipo === '4h'
       ? 'Elige el bloque de 4 horas corridas'
-      : 'Elige el bloque — el horario incluye 1h de colación (9h en total)';
+      : 'Elige el bloque — incluye 1h de colación (9h en total)';
+    renderHorarios(tipo);
     actualizarPreview();
   }
 
   function renderHorarios(tipo) {
     const grid = document.getElementById('horarios-grid');
     const turnos = tipo === '4h' ? TURNOS_4H : TURNOS_8H;
-    grid.innerHTML = turnos.map(t => `
-      <button class="horario-btn" onclick="setHorario(this, '${t.value}')" data-value="${t.value}">
-        ${t.label}
-        ${t.sub ? `<span class="colacion-tag">${t.sub}</span>` : ''}
-      </button>
-    `).join('');
+
+    grid.innerHTML = turnos.map(t => {
+      const cap = getCapacidad(t.value);
+      let clases = 'horario-btn';
+      let tagHTML = t.sub ? `<span class="disp-tag">${t.sub}</span>` : '';
+      let disabled = '';
+
+      if (cap) {
+        const pct = cap.ocupados / cap.limite;
+        if (cap.disponibles <= 0) {
+          // Sin cupos
+          clases += ' lleno';
+          tagHTML = `<span class="disp-tag">Sin cupos</span>`;
+          disabled = 'disabled';
+        } else if (pct >= 0.7) {
+          // Quedan pocos (70% o más ocupado)
+          clases += ' limitado';
+          tagHTML = `<span class="disp-tag">⚡ ${cap.disponibles} cupo${cap.disponibles > 1 ? 's' : ''}</span>`;
+        } else {
+          // Disponible con cupos
+          tagHTML = `<span class="disp-tag">${cap.disponibles} de ${cap.limite} disponibles</span>`;
+        }
+      }
+
+      return `
+        <button class="${clases}" onclick="setHorario(this,'${t.value}')" data-value="${t.value}" ${disabled}>
+          ${t.label}
+          ${tagHTML}
+        </button>`;
+    }).join('');
   }
 
   function setHorario(el, value) {
+    if (el.disabled) return;
     document.querySelectorAll('.horario-btn').forEach(b => b.classList.remove('active'));
     el.classList.add('active');
     horarioActual = value;
@@ -701,29 +363,35 @@
   document.getElementById('dia').addEventListener('change', actualizarPreview);
 
   function validar() {
-    let ok = true;
     const nombre = document.getElementById('nombre').value.trim();
     const dia = document.getElementById('dia').value;
-
     document.getElementById('err-nombre').style.display = nombre ? 'none' : 'flex';
     document.getElementById('err-dia').style.display = dia ? 'none' : 'flex';
     document.getElementById('err-tipo').style.display = tipoActual ? 'none' : 'flex';
     document.getElementById('err-horario').style.display = horarioActual ? 'none' : 'flex';
-
-    if (!nombre || !dia || !tipoActual || !horarioActual) ok = false;
-    return ok;
+    return nombre && dia && tipoActual && horarioActual;
   }
 
   async function enviar() {
     if (!validar()) {
-      document.querySelector('.err-msg[style*="flex"]')?.closest('.card, .field')?.scrollIntoView({ behavior:'smooth', block:'center' });
+      document.querySelector('.err-msg[style*="flex"]')?.closest('.card,.field')?.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+
+    // Verificar disponibilidad justo antes de enviar (doble check)
+    await cargarCapacidad();
+    const cap = getCapacidad(horarioActual);
+    if (cap && cap.disponibles <= 0) {
+      document.getElementById('err-horario').style.display = 'flex';
+      document.getElementById('err-horario').textContent = '⚠ Este horario se llenó justo ahora. Elige otro.';
+      renderHorarios(tipoActual);
+      horarioActual = '';
       return;
     }
 
     const btn = document.getElementById('btn-submit');
     const txtEl = document.getElementById('btn-text');
     const arrEl = document.getElementById('btn-arrow');
-
     btn.disabled = true;
     txtEl.textContent = 'Enviando…';
     arrEl.innerHTML = '<span class="spinner"></span>';
@@ -737,20 +405,17 @@
 
     try {
       await fetch(SHEET_URL, {
-        method: 'POST',
-        mode: 'no-cors',
+        method: 'POST', mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
 
-      // no-cors siempre retorna opaque — asumimos éxito si no hay error de red
-      const detalle = `${payload.nombre} — ${payload.dia}, ${payload.tipo} (${payload.horario})`;
-      document.getElementById('banner-detail').textContent = detalle;
+      document.getElementById('banner-detail').textContent = ` ${payload.nombre} — ${payload.dia}, ${payload.tipo} (${payload.horario})`;
       document.getElementById('banner-success').style.display = 'flex';
       document.getElementById('banner-error').style.display = 'none';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({top:0,behavior:'smooth'});
 
-      // Resetear formulario
+      // Reset
       document.getElementById('nombre').value = '';
       document.getElementById('dia').value = '';
       tipoActual = ''; horarioActual = '';
@@ -758,14 +423,15 @@
       document.getElementById('btn-8h').classList.remove('active');
       document.getElementById('card-horario').style.display = 'none';
       document.getElementById('preview-box').style.display = 'none';
-      document.getElementById('horarios-grid').innerHTML = '';
 
+      // Recargar capacidad para reflejar el nuevo registro
+      await cargarCapacidad();
       setTimeout(() => { document.getElementById('banner-success').style.display = 'none'; }, 8000);
 
-    } catch (err) {
+    } catch(err) {
       document.getElementById('banner-error').style.display = 'flex';
-      document.getElementById('banner-error-msg').textContent = 'No se pudo conectar. Verifica tu conexión a internet.';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.getElementById('banner-error-msg').textContent = ' No se pudo conectar. Verifica tu conexión.';
+      window.scrollTo({top:0,behavior:'smooth'});
     }
 
     btn.disabled = false;
