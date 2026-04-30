@@ -6,125 +6,124 @@
 <title>LipiWork — Registro de Turnos</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --or: #F47920; --or-d: #C85F10; --or-l: #FFF4EC; --or-ll: #FEE8D0;
-    --nv: #1C2F5E; --nv-l: #243870; --nv-ll: #EEF1F8;
-    --wh: #FFFFFF; --gray: #F3F4F6; --gray-b: #E5E7EB;
-    --txt: #111827; --txt-s: #6B7280;
-    --ok: #059669; --ok-l: #D1FAE5;
-    --err: #DC2626; --err-l: #FEE2E2;
-    --dis: #9CA3AF; --dis-l: #F3F4F6;
+  :root{
+    --az:#1C2F5E;--az-m:#2A4A8A;--az-l:#EEF2FB;--az-ll:#F5F7FD;
+    --am:#F5C518;--am-d:#C9A010;--am-l:#FFFBEA;--am-ll:#FFF3C4;
+    --wh:#FFFFFF;--gray:#F3F4F6;--gray-b:#E5E7EB;
+    --txt:#111827;--txt-s:#6B7280;
+    --ok:#059669;--ok-l:#D1FAE5;
+    --err:#DC2626;--err-l:#FEE2E2;--dis:#9CA3AF;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Barlow', sans-serif; background: #F0F2F7; min-height: 100vh; color: var(--txt); }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Barlow',sans-serif;background:#EEF2FB;min-height:100vh;color:var(--txt);}
 
-  header {
-    background: var(--nv); padding: 0 2rem; height: 68px;
-    display: flex; align-items: center; justify-content: space-between;
-    position: sticky; top: 0; z-index: 100;
-    box-shadow: 0 2px 12px rgba(28,47,94,0.3);
-  }
-  .logo { display: flex; align-items: center; gap: 10px; }
-  .logo-flame { width: 36px; height: 36px; background: var(--or); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
-  .logo-text { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 800; color: var(--or); letter-spacing: 0.08em; }
-  .logo-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; }
-  .header-badge { background: rgba(244,121,32,0.12); border: 1px solid rgba(244,121,32,0.25); border-radius: 20px; padding: 6px 14px; font-size: 12px; color: var(--or); font-weight: 600; display: flex; align-items: center; gap: 6px; }
-  .dot-live { width: 7px; height: 7px; background: #4ADE80; border-radius: 50%; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+  header{background:var(--az);padding:0 2rem;height:70px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 3px 16px rgba(28,47,94,0.35);}
+  .logo{display:flex;align-items:center;gap:12px;}
+  .logo-icon{width:40px;height:40px;background:var(--am);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;}
+  .logo-text{font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:var(--wh);letter-spacing:0.08em;}
+  .logo-text span{color:var(--am);}
+  .logo-sub{font-size:11px;color:rgba(255,255,255,0.4);margin-top:1px;}
+  .header-badge{background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.3);border-radius:20px;padding:7px 16px;font-size:12px;color:var(--am);font-weight:600;display:flex;align-items:center;gap:7px;}
+  .dot-live{width:7px;height:7px;background:#4ADE80;border-radius:50%;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
 
-  .hero-band { background: linear-gradient(135deg, var(--nv) 0%, var(--nv-l) 100%); padding: 32px 2rem 28px; text-align: center; border-bottom: 3px solid var(--or); }
-  .hero-band h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 36px; font-weight: 800; color: var(--wh); letter-spacing: 0.04em; margin-bottom: 6px; }
-  .hero-band h1 span { color: var(--or); }
-  .hero-band p { font-size: 14px; color: rgba(255,255,255,0.55); }
+  .hero{background:linear-gradient(135deg,var(--az) 0%,var(--az-m) 100%);padding:36px 2rem 30px;text-align:center;border-bottom:4px solid var(--am);position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:rgba(245,197,24,.07);border-radius:50%;}
+  .hero::after{content:'';position:absolute;bottom:-30px;left:-30px;width:120px;height:120px;background:rgba(245,197,24,.05);border-radius:50%;}
+  .hero h1{font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:800;color:var(--wh);letter-spacing:.04em;margin-bottom:8px;position:relative;}
+  .hero h1 span{color:var(--am);}
+  .hero p{font-size:13px;color:rgba(255,255,255,.5);position:relative;}
 
-  main { max-width: 680px; margin: 0 auto; padding: 32px 1.5rem 60px; }
+  main{max-width:700px;margin:0 auto;padding:32px 1.5rem 60px;}
 
-  .card { background: var(--wh); border-radius: 14px; border: 1px solid var(--gray-b); padding: 28px; margin-bottom: 20px; animation: fadeUp 0.35s ease both; }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+  .card{background:var(--wh);border-radius:16px;border:1px solid var(--gray-b);padding:28px;margin-bottom:20px;animation:fadeUp .35s ease both;box-shadow:0 2px 12px rgba(28,47,94,.06);}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  .card-title{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:700;color:var(--az);letter-spacing:.05em;border-left:4px solid var(--am);padding-left:12px;margin-bottom:5px;text-transform:uppercase;}
+  .card-sub{font-size:12px;color:var(--txt-s);margin-bottom:22px;padding-left:16px;}
 
-  .card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; color: var(--nv); letter-spacing: 0.04em; border-left: 4px solid var(--or); padding-left: 12px; margin-bottom: 6px; text-transform: uppercase; }
-  .card-sub { font-size: 12px; color: var(--txt-s); margin-bottom: 22px; padding-left: 16px; }
+  .field{margin-bottom:18px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+  label{display:block;font-size:11px;font-weight:700;color:var(--az);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px;}
+  label .req{color:var(--am-d);margin-left:2px;}
+  input[type=text],input[type=email],select{width:100%;padding:12px 16px;border:1.5px solid var(--gray-b);border-radius:10px;font-size:14px;font-family:'Barlow',sans-serif;color:var(--txt);background:var(--wh);transition:border-color .2s,box-shadow .2s;outline:none;}
+  input[type=text]:focus,input[type=email]:focus,select:focus{border-color:var(--az-m);box-shadow:0 0 0 3px rgba(42,74,138,.1);}
+  input.error,select.error{border-color:var(--err);}
+  select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;cursor:pointer;}
+  .err-msg{color:var(--err);font-size:11px;margin-top:5px;display:flex;align-items:center;gap:4px;}
 
-  .field { margin-bottom: 18px; }
-  label { display: block; font-size: 12px; font-weight: 700; color: var(--nv); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 7px; }
-  label .req { color: var(--or); margin-left: 2px; }
+  .tipo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .tipo-btn{border:2px solid var(--gray-b);border-radius:12px;padding:16px;background:var(--wh);cursor:pointer;text-align:left;transition:all .18s;font-family:'Barlow',sans-serif;}
+  .tipo-btn:hover{border-color:var(--am);background:var(--am-l);}
+  .tipo-btn.active{border-color:var(--am);background:var(--am-l);box-shadow:0 0 0 3px rgba(245,197,24,.2);}
+  .tipo-btn .t-icon{font-size:24px;margin-bottom:8px;display:block;}
+  .tipo-btn .t-name{font-size:15px;font-weight:700;color:var(--az);display:block;margin-bottom:3px;}
+  .tipo-btn .t-desc{font-size:11px;color:var(--txt-s);}
+  .tipo-btn.active .t-name{color:var(--am-d);}
 
-  input[type="text"] { width: 100%; padding: 12px 16px; border: 1.5px solid var(--gray-b); border-radius: 9px; font-size: 15px; font-family: 'Barlow', sans-serif; color: var(--txt); background: var(--wh); transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
-  input[type="text"]:focus { border-color: var(--or); box-shadow: 0 0 0 3px rgba(244,121,32,0.12); }
-  input[type="text"].error { border-color: var(--err); }
+  .horarios-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:8px;margin-top:4px;}
+  .horario-btn{border:1.5px solid var(--gray-b);border-radius:9px;padding:10px 12px;background:var(--wh);cursor:pointer;font-family:'Barlow',sans-serif;font-size:12px;color:var(--txt);text-align:center;transition:all .15s;line-height:1.5;}
+  .horario-btn:hover:not(:disabled){border-color:var(--az-m);background:var(--az-ll);}
+  .horario-btn.active{border-color:var(--az);background:var(--az-l);color:var(--az);font-weight:700;box-shadow:0 0 0 2px rgba(28,47,94,.15);}
+  .horario-btn.lleno{border-color:var(--gray-b);background:#F9FAFB;color:var(--dis);cursor:not-allowed;opacity:.65;}
+  .horario-btn.limitado{border-color:#FCD34D;background:#FFFBEB;}
+  .horario-btn.limitado:hover:not(:disabled){border-color:var(--am-d);background:var(--am-ll);}
+  .disp-tag{display:block;font-size:10px;margin-top:3px;color:var(--txt-s);}
+  .horario-btn.active .disp-tag{color:var(--az-m);}
+  .horario-btn.lleno .disp-tag{color:var(--err);font-weight:700;}
 
-  select { width: 100%; padding: 12px 16px; border: 1.5px solid var(--gray-b); border-radius: 9px; font-size: 15px; font-family: 'Barlow', sans-serif; color: var(--txt); background: var(--wh); appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; cursor: pointer; transition: border-color 0.2s; outline: none; }
-  select:focus { border-color: var(--or); box-shadow: 0 0 0 3px rgba(244,121,32,0.12); }
-  select.error { border-color: var(--err); }
+  .colacion-info{background:var(--am-ll);border:1px solid rgba(245,197,24,.35);border-radius:9px;padding:11px 15px;font-size:12px;color:var(--am-d);margin-bottom:14px;display:flex;align-items:center;gap:8px;font-weight:500;}
+  .leyenda{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px;font-size:11px;color:var(--txt-s);}
+  .leyenda-item{display:flex;align-items:center;gap:5px;}
+  .leyenda-dot{width:10px;height:10px;border-radius:3px;}
+  .skeleton{background:linear-gradient(90deg,#f0f0f0 25%,#e8e8e8 50%,#f0f0f0 75%);background-size:200% 100%;animation:shimmer 1.2s infinite;border-radius:9px;height:52px;}
+  @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 
-  .err-msg { color: var(--err); font-size: 12px; margin-top: 5px; display: flex; align-items: center; gap: 4px; }
+  .preview{background:var(--az-ll);border:1px solid #C7D5F0;border-radius:12px;padding:18px 20px;margin-bottom:20px;}
+  .preview-title{font-size:11px;font-weight:700;color:var(--az);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;}
+  .preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .preview-item label{font-size:10px;color:var(--txt-s);margin-bottom:3px;}
+  .preview-item span{font-size:14px;font-weight:600;color:var(--az);}
 
-  .tipo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .tipo-btn { border: 2px solid var(--gray-b); border-radius: 10px; padding: 14px 16px; background: var(--wh); cursor: pointer; text-align: left; transition: all 0.18s; font-family: 'Barlow', sans-serif; }
-  .tipo-btn:hover { border-color: var(--or); background: var(--or-l); }
-  .tipo-btn.active { border-color: var(--or); background: var(--or-l); box-shadow: 0 0 0 3px rgba(244,121,32,0.12); }
-  .tipo-btn .tipo-icon { font-size: 22px; margin-bottom: 6px; display: block; }
-  .tipo-btn .tipo-name { font-size: 15px; font-weight: 700; color: var(--nv); display: block; margin-bottom: 2px; }
-  .tipo-btn .tipo-desc { font-size: 11px; color: var(--txt-s); }
-  .tipo-btn.active .tipo-name { color: var(--or-d); }
+  .btn-submit{width:100%;background:var(--az);color:var(--wh);border:none;border-radius:11px;padding:16px;font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:8px;box-shadow:0 4px 14px rgba(28,47,94,.25);}
+  .btn-submit:hover{background:var(--az-m);transform:translateY(-1px);}
+  .btn-submit:disabled{background:#9CA3AF;cursor:not-allowed;transform:none;box-shadow:none;}
 
-  .horarios-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 8px; margin-top: 4px; }
+  .banner{border-radius:12px;padding:18px 20px;margin-bottom:20px;font-size:14px;display:flex;align-items:flex-start;gap:12px;animation:fadeUp .3s ease;}
+  .banner.success{background:var(--ok-l);border:1px solid #6EE7B7;color:#065F46;}
+  .banner.error-banner{background:var(--err-l);border:1px solid #FCA5A5;color:#991B1B;}
+  .banner strong{display:block;font-weight:700;margin-bottom:3px;}
 
-  /* Horario disponible */
-  .horario-btn { border: 1.5px solid var(--gray-b); border-radius: 8px; padding: 10px 12px; background: var(--wh); cursor: pointer; font-family: 'Barlow', sans-serif; font-size: 13px; color: var(--txt); text-align: center; transition: all 0.15s; line-height: 1.4; position: relative; }
-  .horario-btn:hover:not(:disabled) { border-color: var(--or); background: var(--or-l); }
-  .horario-btn.active { border-color: var(--or); background: var(--or-l); color: var(--or-d); font-weight: 700; box-shadow: 0 0 0 2px rgba(244,121,32,0.15); }
+  /* QR MODAL */
+  .modal-overlay{position:fixed;inset:0;background:rgba(28,47,94,.65);display:flex;align-items:center;justify-content:center;z-index:200;animation:fadeIn .2s ease;}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .modal{background:var(--wh);border-radius:20px;padding:36px 32px;max-width:380px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(28,47,94,.35);animation:slideUp .3s ease;}
+  @keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+  .modal-badge{background:var(--am);color:var(--az);font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;padding:5px 16px;border-radius:20px;display:inline-block;margin-bottom:16px;}
+  .modal h2{font-family:'Barlow Condensed',sans-serif;font-size:26px;color:var(--az);font-weight:800;margin-bottom:6px;}
+  .modal .modal-sub{font-size:13px;color:var(--txt-s);margin-bottom:20px;line-height:1.6;}
+  .modal img{border:3px solid var(--az-l);border-radius:12px;margin-bottom:12px;}
+  .modal-id{font-family:monospace;background:var(--az);color:var(--am);padding:8px 16px;border-radius:8px;font-size:14px;letter-spacing:.12em;display:inline-block;margin-bottom:18px;font-weight:700;}
+  .modal-info{background:var(--az-ll);border-radius:10px;padding:14px 16px;margin-bottom:20px;text-align:left;}
+  .modal-info div{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #dce6f7;font-size:13px;}
+  .modal-info div:last-child{border-bottom:none;padding-bottom:0;}
+  .modal-info span:first-child{color:var(--txt-s);}
+  .modal-info span:last-child{font-weight:600;color:var(--az);}
+  .modal-email-note{font-size:12px;color:var(--txt-s);margin-bottom:18px;background:var(--am-l);border:1px solid rgba(245,197,24,.3);border-radius:8px;padding:9px 14px;}
+  .btn-cerrar{background:var(--az);color:var(--wh);border:none;border-radius:9px;padding:13px 36px;font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;letter-spacing:.06em;cursor:pointer;transition:background .2s;}
+  .btn-cerrar:hover{background:var(--az-m);}
 
-  /* Horario lleno */
-  .horario-btn.lleno { border-color: var(--gray-b); background: var(--dis-l); color: var(--dis); cursor: not-allowed; opacity: 0.7; }
-  .horario-btn.lleno .disp-tag { color: var(--err); font-weight: 700; }
+  .spinner{width:18px;height:18px;border:2.5px solid rgba(255,255,255,.3);border-top-color:white;border-radius:50%;animation:spin .7s linear infinite;display:inline-block;}
+  @keyframes spin{to{transform:rotate(360deg)}}
 
-  /* Horario con límite (pero aún disponible) */
-  .horario-btn.limitado { border-color: #FCD34D; background: #FFFBEB; }
-  .horario-btn.limitado:hover:not(:disabled) { border-color: #F59E0B; background: #FEF3C7; }
+  footer{background:var(--az);text-align:center;padding:20px;font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.03em;}
+  footer span{color:var(--am);}
 
-  .disp-tag { display: block; font-size: 10px; margin-top: 3px; color: var(--txt-s); font-weight: 400; }
-  .horario-btn.active .disp-tag { color: var(--or-d); opacity: 0.8; }
-
-  .colacion-info { background: var(--or-ll); border: 1px solid rgba(244,121,32,0.25); border-radius: 8px; padding: 10px 14px; font-size: 12px; color: var(--or-d); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-
-  /* Loading skeleton */
-  .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.2s infinite; border-radius: 8px; height: 48px; }
-  @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-
-  .btn-submit { width: 100%; background: var(--or); color: var(--wh); border: none; border-radius: 10px; padding: 15px; font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, transform 0.1s; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 8px; }
-  .btn-submit:hover { background: var(--or-d); }
-  .btn-submit:active { transform: scale(0.99); }
-  .btn-submit:disabled { background: #D1D5DB; cursor: not-allowed; transform: none; }
-
-  .banner { border-radius: 10px; padding: 16px 18px; margin-bottom: 20px; font-size: 14px; display: flex; align-items: flex-start; gap: 10px; animation: fadeUp 0.3s ease; }
-  .banner.success { background: var(--ok-l); border: 1px solid #6EE7B7; color: #065F46; }
-  .banner.error-banner { background: var(--err-l); border: 1px solid #FCA5A5; color: #991B1B; }
-  .banner-icon { font-size: 18px; }
-  .banner strong { display: block; font-weight: 700; margin-bottom: 2px; }
-
-  .preview { background: var(--nv-ll); border: 1px solid #DBEAFE; border-radius: 10px; padding: 16px 18px; margin-bottom: 20px; }
-  .preview-title { font-size: 11px; font-weight: 700; color: var(--nv); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
-  .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .preview-item label { font-size: 10px; color: var(--txt-s); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px; }
-  .preview-item span { font-size: 14px; font-weight: 600; color: var(--nv); }
-
-  .spinner { width: 18px; height: 18px; border: 2.5px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; display: inline-block; }
-  @keyframes spin { to{transform:rotate(360deg)} }
-
-  /* Leyenda de disponibilidad */
-  .leyenda { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; font-size: 11px; color: var(--txt-s); }
-  .leyenda-item { display: flex; align-items: center; gap: 5px; }
-  .leyenda-dot { width: 10px; height: 10px; border-radius: 3px; }
-
-  footer { background: var(--nv); text-align: center; padding: 18px; font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.03em; }
-  footer span { color: var(--or); }
-
-  @media (max-width: 480px) {
-    .tipo-grid { grid-template-columns: 1fr 1fr; }
-    .horarios-grid { grid-template-columns: 1fr 1fr; }
-    .preview-grid { grid-template-columns: 1fr; }
-    header { padding: 0 1rem; }
+  @media(max-width:520px){
+    .field-row{grid-template-columns:1fr;}
+    .horarios-grid{grid-template-columns:1fr 1fr;}
+    .preview-grid{grid-template-columns:1fr;}
+    header{padding:0 1rem;}
+    .modal{padding:28px 18px;}
   }
 </style>
 </head>
@@ -132,46 +131,45 @@
 
 <header>
   <div class="logo">
-    <div class="logo-flame">🔥</div>
+    <div class="logo-icon">🔥</div>
     <div>
-      <div class="logo-text">LipiWork</div>
-      <div class="logo-sub">Gestión de Turnos</div>
+      <div class="logo-text">Lipi<span>Work</span></div>
+      <div class="logo-sub">Sistema de Gestión de Turnos</div>
     </div>
   </div>
   <div class="header-badge">
     <div class="dot-live"></div>
-    <span>Conectado a Google Sheets</span>
+    <span>En línea · Google Sheets</span>
   </div>
 </header>
 
-<div class="hero-band">
+<div class="hero">
   <h1>Registro de <span>Turno</span></h1>
-  <p>Disponibilidad actualizada en tiempo real</p>
+  <p>Completa el formulario · Recibirás un comprobante con código QR a tu correo</p>
 </div>
 
 <main>
-
-  <div id="banner-success" class="banner success" style="display:none">
-    <span class="banner-icon">✅</span>
-    <div><strong>¡Turno registrado exitosamente!</strong><span id="banner-detail"></span></div>
-  </div>
-
   <div id="banner-error" class="banner error-banner" style="display:none">
-    <span class="banner-icon">⚠️</span>
+    <span style="font-size:20px">⚠️</span>
     <div><strong>Error al enviar</strong><span id="banner-error-msg"></span></div>
   </div>
 
-  <!-- CARD 1 — IDENTIDAD -->
+  <!-- CARD 1 -->
   <div class="card">
     <div class="card-title">Datos Personales</div>
-    <div class="card-sub">Ingresa tu nombre y el día a trabajar</div>
-
-    <div class="field">
-      <label>Nombre completo <span class="req">*</span></label>
-      <input type="text" id="nombre" placeholder="Ej: María González" autocomplete="name">
-      <div class="err-msg" id="err-nombre" style="display:none">⚠ El nombre es obligatorio</div>
+    <div class="card-sub">El comprobante QR será enviado a tu correo automáticamente</div>
+    <div class="field-row">
+      <div class="field">
+        <label>Nombre completo <span class="req">*</span></label>
+        <input type="text" id="nombre" placeholder="Ej: María González" autocomplete="name">
+        <div class="err-msg" id="err-nombre" style="display:none">⚠ Nombre obligatorio</div>
+      </div>
+      <div class="field">
+        <label>Correo electrónico <span class="req">*</span></label>
+        <input type="email" id="email" placeholder="correo@empresa.cl" autocomplete="email">
+        <div class="err-msg" id="err-email" style="display:none">⚠ Correo válido requerido</div>
+      </div>
     </div>
-
     <div class="field">
       <label>Día de la semana <span class="req">*</span></label>
       <select id="dia">
@@ -183,54 +181,43 @@
     </div>
   </div>
 
-  <!-- CARD 2 — TIPO -->
+  <!-- CARD 2 -->
   <div class="card">
     <div class="card-title">Tipo de Turno</div>
     <div class="card-sub">Selecciona la duración de tu jornada</div>
     <div class="tipo-grid">
       <button class="tipo-btn" onclick="setTipo('4h')" id="btn-4h">
-        <span class="tipo-icon">⏱</span>
-        <span class="tipo-name">4 Horas</span>
-        <span class="tipo-desc">Sin colación incluida</span>
+        <span class="t-icon">⏱</span><span class="t-name">4 Horas</span><span class="t-desc">Sin colación incluida</span>
       </button>
       <button class="tipo-btn" onclick="setTipo('8h')" id="btn-8h">
-        <span class="tipo-icon">🕐</span>
-        <span class="tipo-name">8 Horas</span>
-        <span class="tipo-desc">Incluye 1h de colación</span>
+        <span class="t-icon">🕐</span><span class="t-name">8 Horas</span><span class="t-desc">Incluye 1h de colación</span>
       </button>
     </div>
-    <div class="err-msg" id="err-tipo" style="display:none;margin-top:8px">⚠ Selecciona el tipo de turno</div>
+    <div class="err-msg" id="err-tipo" style="display:none;margin-top:10px">⚠ Selecciona el tipo de turno</div>
   </div>
 
-  <!-- CARD 3 — HORARIO -->
+  <!-- CARD 3 -->
   <div class="card" id="card-horario" style="display:none">
     <div class="card-title">Horario</div>
-    <div class="card-sub" id="horario-sub">Elige el bloque horario de tu turno</div>
-
-    <div id="colacion-info" class="colacion-info" style="display:none">
-      🍽 El bloque incluye <strong>1 hora de colación</strong> — horario real de trabajo de 8 horas efectivas.
-    </div>
-
-    <!-- Leyenda -->
+    <div class="card-sub" id="horario-sub">Elige el bloque horario</div>
+    <div id="colacion-info" class="colacion-info" style="display:none">🍽 Incluye <strong>1 hora de colación</strong> — trabajo efectivo de 8 horas.</div>
     <div class="leyenda">
-      <div class="leyenda-item"><div class="leyenda-dot" style="background:#E5E7EB;border:1.5px solid #D1D5DB"></div> Disponible</div>
-      <div class="leyenda-item"><div class="leyenda-dot" style="background:#FEF3C7;border:1.5px solid #FCD34D"></div> Quedan pocos cupos</div>
-      <div class="leyenda-item"><div class="leyenda-dot" style="background:#F3F4F6;border:1.5px solid #E5E7EB"></div> Sin cupos</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#fff;border:1.5px solid #D1D5DB"></div>Disponible</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#FEF3C7;border:1.5px solid #FCD34D"></div>Pocos cupos</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:#F9FAFB;border:1.5px solid #E5E7EB"></div>Sin cupos</div>
     </div>
-
     <div class="horarios-grid" id="horarios-grid">
-      <!-- skeletons mientras carga -->
-      <div class="skeleton"></div><div class="skeleton"></div>
-      <div class="skeleton"></div><div class="skeleton"></div>
+      <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
     </div>
-    <div class="err-msg" id="err-horario" style="display:none;margin-top:8px">⚠ Selecciona un horario disponible</div>
+    <div class="err-msg" id="err-horario" style="display:none;margin-top:10px">⚠ Selecciona un horario disponible</div>
   </div>
 
   <!-- RESUMEN -->
   <div class="preview" id="preview-box" style="display:none">
-    <div class="preview-title">📋 Resumen del turno a registrar</div>
+    <div class="preview-title">📋 Resumen — revisa antes de registrar</div>
     <div class="preview-grid">
       <div class="preview-item"><label>Nombre</label><span id="prev-nombre">—</span></div>
+      <div class="preview-item"><label>Correo</label><span id="prev-email" style="font-size:12px">—</span></div>
       <div class="preview-item"><label>Día</label><span id="prev-dia">—</span></div>
       <div class="preview-item"><label>Tipo</label><span id="prev-tipo">—</span></div>
       <div class="preview-item"><label>Horario</label><span id="prev-horario">—</span></div>
@@ -241,203 +228,152 @@
     <span id="btn-text">Registrar Turno</span>
     <span id="btn-arrow">→</span>
   </button>
-
 </main>
 
-<footer>🔥 <span>LipiWork</span> — Gestión de Turnos · Datos sincronizados en tiempo real con Google Sheets</footer>
+<!-- MODAL QR -->
+<div class="modal-overlay" id="modal" style="display:none" onclick="cerrarModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-badge">✅ TURNO CONFIRMADO</div>
+    <h2>¡Registro exitoso!</h2>
+    <p class="modal-sub">Este es tu comprobante. Guárdalo o captura pantalla.<br>También se envió por correo.</p>
+    <img id="qr-img" src="" width="180" height="180" alt="Código QR de verificación">
+    <div class="modal-id" id="qr-id">LW-000000</div>
+    <div class="modal-info" id="modal-info"></div>
+    <div class="modal-email-note">📧 Comprobante enviado a <strong id="modal-email-dest">—</strong></div>
+    <button class="btn-cerrar" onclick="document.getElementById('modal').style.display='none'">Entendido ✓</button>
+  </div>
+</div>
+
+<footer>🔥 <span>LipiWork</span> — Gestión de Turnos · Sincronizado con Google Sheets · Comprobante QR por correo</footer>
 
 <script>
-  const SHEET_URL = "https://script.google.com/macros/s/AKfycbzB3Tgs2oDp6jmwyFyTSXRj0PuC1sj6K1nSkgbLiVbPwK_A5gYyFnuOquffwaIirX9e4w/exec";
+const SHEET_URL="https://script.google.com/macros/s/AKfycbzB3Tgs2oDp6jmwyFyTSXRj0PuC1sj6K1nSkgbLiVbPwK_A5gYyFnuOquffwaIirX9e4w/exec";
+const T4H=[],T8H=[];
+for(let h=7;h<=18;h++){const s=String(h).padStart(2,'0')+':00',e=String(h+4).padStart(2,'0')+':00';T4H.push({value:s+' - '+e,label:s+' → '+e});}
+for(let h=7;h<=13;h++){const s=String(h).padStart(2,'0')+':00',e=String(h+9).padStart(2,'0')+':00',ef=String(h).padStart(2,'0')+':00 - '+String(h+8).padStart(2,'0')+':00';T8H.push({value:s+' - '+e,label:s+' → '+e,sub:ef+' efectivas'});}
 
-  // Turnos base (sin límite definido en Sheets)
-  const TURNOS_4H = [];
-  for (let h = 7; h <= 18; h++) {
-    const s = String(h).padStart(2,'0')+':00';
-    const e = String(h+4).padStart(2,'0')+':00';
-    TURNOS_4H.push({ value: s+' - '+e, label: s+' → '+e });
-  }
-  const TURNOS_8H = [];
-  for (let h = 7; h <= 13; h++) {
-    const s = String(h).padStart(2,'0')+':00';
-    const e = String(h+9).padStart(2,'0')+':00';
-    const ef = String(h).padStart(2,'0')+':00 - '+String(h+8).padStart(2,'0')+':00';
-    TURNOS_8H.push({ value: s+' - '+e, label: s+' → '+e, sub: ef+' efectivas' });
-  }
+let tipo='',horario='',caps=[];
 
-  let tipoActual = '';
-  let horarioActual = '';
-  let capacidadData = []; // datos leídos desde Google Sheets
+async function cargarCaps(){try{const r=await fetch(SHEET_URL);caps=await r.json();}catch{caps=[];}}
+cargarCaps();
 
-  // ── Leer capacidad desde Apps Script (doGet) ──
-  async function cargarCapacidad() {
-    try {
-      const res = await fetch(SHEET_URL, { method: 'GET' });
-      const data = await res.json();
-      capacidadData = data;
-    } catch(e) {
-      // Si falla, el formulario muestra todos los turnos sin restricción
-      capacidadData = [];
+const norm=h=>h.toString().trim().replace(/\b(\d):(\d{2})\b/g,'0$1:$2');
+const getCap=v=>caps.find(c=>norm(c.horario)===norm(v))||null;
+
+function setTipo(t){
+  tipo=t;horario='';
+  document.getElementById('btn-4h').classList.toggle('active',t==='4h');
+  document.getElementById('btn-8h').classList.toggle('active',t==='8h');
+  document.getElementById('err-tipo').style.display='none';
+  document.getElementById('card-horario').style.display='block';
+  document.getElementById('colacion-info').style.display=t==='8h'?'flex':'none';
+  document.getElementById('horario-sub').textContent=t==='4h'?'Elige el bloque de 4 horas corridas':'Bloque completo incluye 1h colación (9h en total)';
+  renderHorarios(t);actualizarPreview();
+}
+
+function renderHorarios(t){
+  const g=document.getElementById('horarios-grid');
+  g.innerHTML=(t==='4h'?T4H:T8H).map(x=>{
+    const c=getCap(x.value);let cls='horario-btn',tag=x.sub?`<span class="disp-tag">${x.sub}</span>`:'',dis='';
+    if(c){const p=c.limite>0?c.ocupados/c.limite:0;
+      if(c.disponibles<=0){cls+=' lleno';tag='<span class="disp-tag">Sin cupos</span>';dis='disabled';}
+      else if(p>=.7){cls+=' limitado';tag=`<span class="disp-tag">⚡ ${c.disponibles} cupo${c.disponibles>1?'s':''}</span>`;}
+      else{tag=`<span class="disp-tag">${c.disponibles} de ${c.limite} disp.</span>`;}
     }
+    return`<button class="${cls}" onclick="selHorario(this,'${x.value}')" ${dis}>${x.label}${tag}</button>`;
+  }).join('');
+}
+
+function selHorario(el,v){
+  if(el.disabled)return;
+  document.querySelectorAll('.horario-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');horario=v;
+  document.getElementById('err-horario').style.display='none';actualizarPreview();
+}
+
+function actualizarPreview(){
+  const n=document.getElementById('nombre').value.trim(),em=document.getElementById('email').value.trim(),d=document.getElementById('dia').value;
+  if(n||em||d||tipo||horario){
+    document.getElementById('preview-box').style.display='block';
+    document.getElementById('prev-nombre').textContent=n||'—';
+    document.getElementById('prev-email').textContent=em||'—';
+    document.getElementById('prev-dia').textContent=d||'—';
+    document.getElementById('prev-tipo').textContent=tipo==='4h'?'4 Horas':tipo==='8h'?'8 Horas':'—';
+    document.getElementById('prev-horario').textContent=horario||'—';
   }
+}
+document.getElementById('nombre').addEventListener('input',actualizarPreview);
+document.getElementById('email').addEventListener('input',actualizarPreview);
+document.getElementById('dia').addEventListener('change',actualizarPreview);
 
-  // Llama al cargar la página
-  cargarCapacidad();
+const valEmail=e=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
 
-  function getCapacidad(horarioValue) {
-    // Busca si ese horario tiene límite definido
-    return capacidadData.find(c => c.horario === horarioValue) || null;
+function validar(){
+  const n=document.getElementById('nombre').value.trim(),em=document.getElementById('email').value.trim(),d=document.getElementById('dia').value;
+  document.getElementById('err-nombre').style.display=n?'none':'flex';
+  document.getElementById('err-email').style.display=valEmail(em)?'none':'flex';
+  document.getElementById('err-dia').style.display=d?'none':'flex';
+  document.getElementById('err-tipo').style.display=tipo?'none':'flex';
+  document.getElementById('err-horario').style.display=horario?'none':'flex';
+  return n&&valEmail(em)&&d&&tipo&&horario;
+}
+
+function mostrarModal(id,p){
+  const datos=`LIPIWORK|${id}|${p.nombre}|${p.dia}|${p.tipo}|${p.horario}`;
+  document.getElementById('qr-img').src=`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(datos)}&bgcolor=FFFFFF&color=1C2F5E&margin=10`;
+  document.getElementById('qr-id').textContent=id;
+  document.getElementById('modal-email-dest').textContent=p.email;
+  document.getElementById('modal-info').innerHTML=
+    `<div><span>Nombre</span><span>${p.nombre}</span></div>
+     <div><span>Día</span><span>${p.dia}</span></div>
+     <div><span>Tipo</span><span>${p.tipo}</span></div>
+     <div><span>Horario</span><span>${p.horario}</span></div>`;
+  document.getElementById('modal').style.display='flex';
+}
+
+function cerrarModal(e){if(!e||e.target===document.getElementById('modal'))document.getElementById('modal').style.display='none';}
+
+async function enviar(){
+  if(!validar()){document.querySelector('.err-msg[style*="flex"]')?.closest('.card,.field')?.scrollIntoView({behavior:'smooth',block:'center'});return;}
+  await cargarCaps();
+  const c=getCap(horario);
+  if(c&&c.disponibles<=0){
+    const el=document.getElementById('err-horario');el.style.display='flex';el.textContent='⚠ Este horario se llenó. Elige otro.';
+    renderHorarios(tipo);horario='';return;
   }
+  const btn=document.getElementById('btn-submit');
+  btn.disabled=true;
+  document.getElementById('btn-text').textContent='Enviando…';
+  document.getElementById('btn-arrow').innerHTML='<span class="spinner"></span>';
 
-  function setTipo(tipo) {
-    tipoActual = tipo;
-    horarioActual = '';
-    document.getElementById('btn-4h').classList.toggle('active', tipo === '4h');
-    document.getElementById('btn-8h').classList.toggle('active', tipo === '8h');
-    document.getElementById('err-tipo').style.display = 'none';
-    document.getElementById('card-horario').style.display = 'block';
-    document.getElementById('colacion-info').style.display = tipo === '8h' ? 'flex' : 'none';
-    document.getElementById('horario-sub').textContent = tipo === '4h'
-      ? 'Elige el bloque de 4 horas corridas'
-      : 'Elige el bloque — incluye 1h de colación (9h en total)';
-    renderHorarios(tipo);
-    actualizarPreview();
+  const id='LW-'+Date.now().toString(36).toUpperCase().slice(-6);
+  const p={
+    id,
+    nombre:document.getElementById('nombre').value.trim(),
+    email:document.getElementById('email').value.trim(),
+    dia:document.getElementById('dia').value,
+    tipo:tipo==='4h'?'4 Horas':'8 Horas',
+    horario
+  };
+
+  try{
+    await fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)});
+    mostrarModal(id,p);
+    window.scrollTo({top:0,behavior:'smooth'});
+    document.getElementById('nombre').value='';document.getElementById('email').value='';document.getElementById('dia').value='';
+    tipo='';horario='';
+    document.getElementById('btn-4h').classList.remove('active');document.getElementById('btn-8h').classList.remove('active');
+    document.getElementById('card-horario').style.display='none';document.getElementById('preview-box').style.display='none';
+    await cargarCaps();
+  }catch{
+    document.getElementById('banner-error').style.display='flex';
+    document.getElementById('banner-error-msg').textContent=' No se pudo conectar. Verifica tu conexión.';
+    window.scrollTo({top:0,behavior:'smooth'});
   }
-
-  function renderHorarios(tipo) {
-    const grid = document.getElementById('horarios-grid');
-    const turnos = tipo === '4h' ? TURNOS_4H : TURNOS_8H;
-
-    grid.innerHTML = turnos.map(t => {
-      const cap = getCapacidad(t.value);
-      let clases = 'horario-btn';
-      let tagHTML = t.sub ? `<span class="disp-tag">${t.sub}</span>` : '';
-      let disabled = '';
-
-      if (cap) {
-        const pct = cap.ocupados / cap.limite;
-        if (cap.disponibles <= 0) {
-          // Sin cupos
-          clases += ' lleno';
-          tagHTML = `<span class="disp-tag">Sin cupos</span>`;
-          disabled = 'disabled';
-        } else if (pct >= 0.7) {
-          // Quedan pocos (70% o más ocupado)
-          clases += ' limitado';
-          tagHTML = `<span class="disp-tag">⚡ ${cap.disponibles} cupo${cap.disponibles > 1 ? 's' : ''}</span>`;
-        } else {
-          // Disponible con cupos
-          tagHTML = `<span class="disp-tag">${cap.disponibles} de ${cap.limite} disponibles</span>`;
-        }
-      }
-
-      return `
-        <button class="${clases}" onclick="setHorario(this,'${t.value}')" data-value="${t.value}" ${disabled}>
-          ${t.label}
-          ${tagHTML}
-        </button>`;
-    }).join('');
-  }
-
-  function setHorario(el, value) {
-    if (el.disabled) return;
-    document.querySelectorAll('.horario-btn').forEach(b => b.classList.remove('active'));
-    el.classList.add('active');
-    horarioActual = value;
-    document.getElementById('err-horario').style.display = 'none';
-    actualizarPreview();
-  }
-
-  function actualizarPreview() {
-    const nombre = document.getElementById('nombre').value.trim();
-    const dia = document.getElementById('dia').value;
-    if (nombre || dia || tipoActual || horarioActual) {
-      document.getElementById('preview-box').style.display = 'block';
-      document.getElementById('prev-nombre').textContent = nombre || '—';
-      document.getElementById('prev-dia').textContent = dia || '—';
-      document.getElementById('prev-tipo').textContent = tipoActual === '4h' ? '4 Horas' : tipoActual === '8h' ? '8 Horas' : '—';
-      document.getElementById('prev-horario').textContent = horarioActual || '—';
-    }
-  }
-
-  document.getElementById('nombre').addEventListener('input', actualizarPreview);
-  document.getElementById('dia').addEventListener('change', actualizarPreview);
-
-  function validar() {
-    const nombre = document.getElementById('nombre').value.trim();
-    const dia = document.getElementById('dia').value;
-    document.getElementById('err-nombre').style.display = nombre ? 'none' : 'flex';
-    document.getElementById('err-dia').style.display = dia ? 'none' : 'flex';
-    document.getElementById('err-tipo').style.display = tipoActual ? 'none' : 'flex';
-    document.getElementById('err-horario').style.display = horarioActual ? 'none' : 'flex';
-    return nombre && dia && tipoActual && horarioActual;
-  }
-
-  async function enviar() {
-    if (!validar()) {
-      document.querySelector('.err-msg[style*="flex"]')?.closest('.card,.field')?.scrollIntoView({behavior:'smooth',block:'center'});
-      return;
-    }
-
-    // Verificar disponibilidad justo antes de enviar (doble check)
-    await cargarCapacidad();
-    const cap = getCapacidad(horarioActual);
-    if (cap && cap.disponibles <= 0) {
-      document.getElementById('err-horario').style.display = 'flex';
-      document.getElementById('err-horario').textContent = '⚠ Este horario se llenó justo ahora. Elige otro.';
-      renderHorarios(tipoActual);
-      horarioActual = '';
-      return;
-    }
-
-    const btn = document.getElementById('btn-submit');
-    const txtEl = document.getElementById('btn-text');
-    const arrEl = document.getElementById('btn-arrow');
-    btn.disabled = true;
-    txtEl.textContent = 'Enviando…';
-    arrEl.innerHTML = '<span class="spinner"></span>';
-
-    const payload = {
-      nombre: document.getElementById('nombre').value.trim(),
-      dia: document.getElementById('dia').value,
-      tipo: tipoActual === '4h' ? '4 Horas' : '8 Horas',
-      horario: horarioActual
-    };
-
-    try {
-      await fetch(SHEET_URL, {
-        method: 'POST', mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-
-      document.getElementById('banner-detail').textContent = ` ${payload.nombre} — ${payload.dia}, ${payload.tipo} (${payload.horario})`;
-      document.getElementById('banner-success').style.display = 'flex';
-      document.getElementById('banner-error').style.display = 'none';
-      window.scrollTo({top:0,behavior:'smooth'});
-
-      // Reset
-      document.getElementById('nombre').value = '';
-      document.getElementById('dia').value = '';
-      tipoActual = ''; horarioActual = '';
-      document.getElementById('btn-4h').classList.remove('active');
-      document.getElementById('btn-8h').classList.remove('active');
-      document.getElementById('card-horario').style.display = 'none';
-      document.getElementById('preview-box').style.display = 'none';
-
-      // Recargar capacidad para reflejar el nuevo registro
-      await cargarCapacidad();
-      setTimeout(() => { document.getElementById('banner-success').style.display = 'none'; }, 8000);
-
-    } catch(err) {
-      document.getElementById('banner-error').style.display = 'flex';
-      document.getElementById('banner-error-msg').textContent = ' No se pudo conectar. Verifica tu conexión.';
-      window.scrollTo({top:0,behavior:'smooth'});
-    }
-
-    btn.disabled = false;
-    txtEl.textContent = 'Registrar Turno';
-    arrEl.textContent = '→';
-  }
+  btn.disabled=false;
+  document.getElementById('btn-text').textContent='Registrar Turno';
+  document.getElementById('btn-arrow').textContent='→';
+}
 </script>
 </body>
 </html>
